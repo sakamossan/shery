@@ -31,6 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rakuten',
+
+    'debug_toolbar',
+    'django_extensions',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,8 +82,36 @@ WSGI_APPLICATION = 'shery.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'sqlite', 'default.sqlite3'),
     }
+}
+
+LOGGING = {
+    'version': 1,
+    'formatters': {
+        'simple': {
+            'format': '\t'.join(["time:%(asctime)s", "level:%(levelname)s", "%(message)s"])
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, '../log/django.log'),
+            'formatter': 'simple',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+    },
+    'loggers': {
+        'file_and_console': {
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+        },
+    },
 }
 
 
