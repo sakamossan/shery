@@ -21,7 +21,7 @@ class Item(TimeStampedModel):
     review_count = models.PositiveIntegerField()
     review_average = models.PositiveSmallIntegerField()
     url = models.CharField(max_length=2048)
-    image_url = models.CharField(max_length=2048)
+    image_url = models.CharField(max_length=2048, null=True)
 
     # shop
     shop_code = models.CharField(max_length=64)

@@ -1,11 +1,9 @@
-# coding:utf-8
-from __future__ import unicode_literals
 import logging
 
 
 def dump_ltsv(dict_):
     return "\t".join(
-        "{}:{}".format(k, v)  for k, v
+        "{}:{}".format(k, v) for k, v
         in sorted(dict_.items(), key=lambda p: p[0])
     )
 
