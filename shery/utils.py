@@ -1,10 +1,11 @@
 import logging
+from django.conf import settings
 
 
 def dump_ltsv(dict_):
     return "\t".join(
         "{}:{}".format(k, v) for k, v
-        in sorted(dict_.items(), key=lambda p: p[0])
+        in sorted(dict_.items())
     )
 
 
@@ -19,3 +20,8 @@ def info_dump(logtype=None, **dict_):
     if logtype is not None:
         msg = "logtype:{}\t{}".format(logtype, msg)
     logger.info(msg)
+
+
+def basedir_open(path, *args, **kw):
+    return open('{}/{}'.format(settings.BASE_DIR, path), *args, **kw)
+

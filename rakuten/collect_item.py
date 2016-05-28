@@ -18,11 +18,11 @@ class Item(object):
     def image_url(self) -> str:
         m = self.data.get('mediumImageUrls', [])
         if m:
-            return m[0]['imageUrl']
+            return m[0]
         else:
             s = self.data.get('smallImageUrls', [])
             if s:
-                return s[0]['imageUrl']
+                return s[0]
 
     def genres(self):
         genre = Genre.objects.get(pk=self.data['genreId'])
@@ -40,7 +40,7 @@ class Item(object):
             'url': self.data['itemUrl'],
             'shop_code': self.data['shopCode'],
             'shop_url': self.data['shopUrl'],
-            'image_url': self.image_url,
+            'image_url': self.image_url(),
             'created': self.n,
             'modified': self.n,
         }
