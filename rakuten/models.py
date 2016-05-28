@@ -3,14 +3,17 @@ from django_extensions.db.models import TimeStampedModel
 
 
 class Genre(TimeStampedModel):
+
     id = models.CharField(primary_key=True, max_length=64)
     name = models.CharField(max_length=256)
     level = models.PositiveSmallIntegerField()
+    path = models.CharField(max_length=256)  # e.g. `123/223/456`
 
 
 class Item(TimeStampedModel):
+
     code = models.CharField(primary_key=True, max_length=128)
-    genres = models.ManyToManyField(Genre)
+    genre = models.ForeignKey(Genre)
     name = models.CharField(max_length=256)
     catchcopy = models.TextField()
     caption = models.TextField()
