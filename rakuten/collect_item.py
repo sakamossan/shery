@@ -24,10 +24,13 @@ class Item(object):
             if s:
                 return s[0]['imageUrl']
 
+    def genres(self):
+        genre = Genre.objects.get(pk=self.data['genreId'])
+        return genre.parents()
+
     def to_model_param(self) -> Dict:
         return {
             'code': self.data['itemCode'],
-            'genre': Genre.objects.get(pk=self.data['genreId']),
             'name': self.data['itemName'],
             'catchcopy': self.data['catchcopy'],
             'caption': self.data['itemCaption'],
