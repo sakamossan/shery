@@ -50,12 +50,12 @@ class ItemCollector(object):
 
     def __init__(self, genre: Genre):
         self.genre = genre
-        self.current_page = 0
+        self.current_page = 1
 
     def collect(self) -> Iterable[Dict]:
-        while self.current_page <= 10:  # とりあえず300件とれたら十分
-            self.current_page += 1
+        while self.current_page <= 3:  # とりあえず100件くらいとれたら十分
             data = self.get_api_data()
+            self.current_page += 1
             if data:
                 for item in data:
                     yield item

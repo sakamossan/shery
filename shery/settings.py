@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'rakuten',
 
-    'debug_toolbar',
+    'rest_framework',
     'django_extensions',
 
     'django.contrib.admin',
@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # http://django-debug-toolbar.readthedocs.io/en/1.2.2/installation.html#quick-setup
+    'debug_toolbar',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -158,4 +161,9 @@ REQUEST_CACHE = {
     'cache_name': '{}/sqlite/requests_cache'.format(BASE_DIR),
     'backend': 'sqlite',
     'expire_after': None
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }
