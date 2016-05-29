@@ -162,3 +162,8 @@ REQUEST_CACHE = {
     'backend': 'sqlite',
     'expire_after': None
 }
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
