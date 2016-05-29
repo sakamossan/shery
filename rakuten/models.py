@@ -7,9 +7,23 @@ from django_extensions.db.models import TimeStampedModel
 class Genre(TimeStampedModel):
 
     class Manager(models.Manager):
+
+        queried_by_names = [
+            'ウェットフード',
+            'ドライフード',
+            'ガム',
+            'おやつ',
+            'サプリ',
+            '水',
+            'ミルク',
+            '離乳食',
+            'その他',
+        ]
+
         @functools.lru_cache(maxsize=256, typed=True)
         def get_by_cache(self, pk):
             return self.get(pk=pk)
+
     objects = Manager()
 
     id = models.CharField(primary_key=True, max_length=64)
@@ -32,7 +46,7 @@ class Item(TimeStampedModel):
     caption = models.TextField()
     price = models.PositiveIntegerField()
     review_count = models.PositiveIntegerField()
-    review_average = models.PositiveSmallIntegerField()
+    review_average = models.FloatField()
     url = models.CharField(max_length=2048)
     image_url = models.CharField(max_length=2048, null=True)
 
