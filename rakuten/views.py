@@ -28,7 +28,7 @@ class ItemViewSet(viewsets.ModelViewSet):
             k: v for k, v in request.query_params.dict().items()
             if k in self.allowed_params
         }
-        queryset = Item.objects.filter(**query_param).order_by('-review_count')
+        queryset = Item.prefetch_mgr.filter(**query_param).order_by('-review_count')
         queryset = self.paginate_queryset(queryset) or queryset
         serializer = ItemSerializer(queryset, many=True)
         return Response(serializer.data)

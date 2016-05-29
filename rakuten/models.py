@@ -39,6 +39,14 @@ class Genre(TimeStampedModel):
 
 class Item(TimeStampedModel):
 
+    class PrefetchManager(models.Manager):
+        def get_queryset(self):
+            base = super().get_queryset()
+            return base.prefetch_related('genres')
+
+    objects = models.Manager()
+    prefetch_mgr = PrefetchManager()
+
     code = models.CharField(primary_key=True, max_length=128)
     genres = models.ManyToManyField(Genre)
     name = models.CharField(max_length=256)
