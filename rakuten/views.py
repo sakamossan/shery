@@ -12,7 +12,7 @@ class ItemViewSet(viewsets.ModelViewSet):
         'name', 'name__contains',
         'price', 'price__lt', 'price__gt',
         'review_count', 'review_count__lt', 'review_count__gt',
-        'review_average_count', 'review_average__lt', 'review_average__gt',
+        'review_average', 'review_average__lt', 'review_average__gt',
         'shop_code',
         'genres__name',
         'genres__level',
