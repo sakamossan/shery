@@ -1,3 +1,5 @@
+app/node_modules
+
 sqlite/*
 secret.py
 
