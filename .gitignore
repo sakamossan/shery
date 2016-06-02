@@ -1,5 +1,4 @@
-app/node_modules
-
+ui/node_modules
 sqlite/*
 secret.py
 
@@ -14,8 +13,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-env/
-build/
+buenv/
 develop-eggs/
 dist/
 downloads/

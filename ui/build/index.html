@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://code.jquery.com/jquery-2.2.3.js"></script>
+        <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+            rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+            rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/journal/bootstrap.min.css"
+            rel="stylesheet" integrity="sha384-r/qnS4YZBLuBSKeVc+sM4eUYUiJMFhkHfx1nwlErHhTd+NgeJlN/NiiTd6jbKJzm" crossorigin="anonymous">
+        <title>shery</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand">shery</a>
+                </div>
+            </div>
+        </nav>
+        <div ng-controller="ItemListController as itemList" class="container">
+            <div class="list-group">
+            </div>
+        </div>
+    </body>
+    <script id="itemTemplate" type="text/x-jquery-tmpl">
+        <a href="${url}" class="list-group-item">
+            <img class="pull-left col-xs-2" src=${imgUrl}>
+            <p class="list-group-item-text">レビュー数: ${reviewCount}</p>
+            <p class="list-group-item-text">評価平均:${star}</p>
+            <p class="list-group-item-text clearfix">${name}</p>
+        </a>
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.10/angular.min.js"></script>
+    <script src="./build/app.js"></script>
+    <script src="./build/item_list.js"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootlint/0.14.2/bootlint.min.js"
+        integrity="sha384-M9T3JVTBbDUeEzC8X6JJbfV/mwsN/NrkiJ9NW1FQqOsgIeBoE/ep1oUZ/NJAx5Wq" crossorigin="anonymous"></script>
+</html>

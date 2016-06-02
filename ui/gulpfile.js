@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var babel = require('gulp-babel');
-var sourcemaps = require("gulp-sourcemaps");
 var Server = require('karma').Server;
 
 
@@ -10,7 +9,6 @@ return gulp.src(['./src/**/*.js'])
     .pipe(babel({
         presets: ['es2015']
     }))
-    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./build'));
 });
 
