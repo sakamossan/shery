@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+{% verbatim %}
+<html ng-app="app">
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta charset="utf-8">
@@ -23,21 +24,19 @@
                 </div>
             </div>
         </nav>
-        <div ng-controller="ItemListController as itemList" class="container">
+        <div ng-controller="ItemListController" class="container">
             <div class="list-group">
+                <ul>
+                    <li ng-repeat="item in list">
+                        {{ item.name }}
+                    </li>
+                </ul>
             </div>
         </div>
     </body>
-    <script id="itemTemplate" type="text/x-jquery-tmpl">
-        <a href="${url}" class="list-group-item">
-            <img class="pull-left col-xs-2" src=${imgUrl}>
-            <p class="list-group-item-text">レビュー数: ${reviewCount}</p>
-            <p class="list-group-item-text">評価平均:${star}</p>
-            <p class="list-group-item-text clearfix">${name}</p>
-        </a>
-    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.10/angular.min.js"></script>
     <script src="/static/app.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootlint/0.14.2/bootlint.min.js"
         integrity="sha384-M9T3JVTBbDUeEzC8X6JJbfV/mwsN/NrkiJ9NW1FQqOsgIeBoE/ep1oUZ/NJAx5Wq" crossorigin="anonymous"></script>
+{% endverbatim %}
 </html>
