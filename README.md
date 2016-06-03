@@ -17,4 +17,5 @@ $ echo "xxxxxxxxxxx" | tee shery/secret.py
 $ ./scripts/reset.sh
 $ ./manage.py get_genres
 $ ./manage.py get_items
+$ ./manage.py bigger_image_size
 ```
