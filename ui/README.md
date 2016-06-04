@@ -6,6 +6,9 @@ version 0.15.1.
 ## Build & development
 
 ```bash
+$ npm install -g yo grunt-cli bower
+$ npm install -g generator-angular
+$ yo angular --minsafe shery
 $ sudo gem update --system
 $ sudo gem install compass
 $ npm install \
