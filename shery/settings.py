@@ -63,7 +63,7 @@ ROOT_URLCONF = 'shery.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR + '/ui/build/'],
+        'DIRS': [BASE_DIR + '/ui/dist/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -157,10 +157,10 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 if IS_LOCAL:
-    STATICFILES_DIRS = [BASE_DIR + '/ui/build', ]
+    STATICFILES_DIRS = [BASE_DIR + '/ui/dist', ]
 else:
     # 本番ではcollectstaticを使うためこっち
-    STATIC_ROOT = os.path.join(BASE_DIR, 'ui', 'build')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'ui', 'dist')
 
 
 REQUEST_CACHE = {

@@ -1,0 +1,14 @@
+<div>
+  <div ng-repeat="item in list" class="row">
+    <a href="{{ item.url }}">
+      <div class="col-xs-12">
+        <div class="thumbnail">
+          <img ng-src="{{ item.image_url }}" alt="">
+          <div class="caption">
+            <p>{{ item.name }}</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
