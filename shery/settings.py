@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+IS_LOCAL = os.path.abspath(__file__).startswith("/Users/")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -63,7 +63,7 @@ ROOT_URLCONF = 'shery.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR + '/ui/dist/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -152,9 +152,15 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
+# https://docs.djangoproject.com/en/1.8/howto/static-files/#deployment
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
+
+if IS_LOCAL:
+    STATICFILES_DIRS = [BASE_DIR + '/ui/dist', ]
+else:
+    # 本番ではcollectstaticを使うためこっち
+    STATIC_ROOT = os.path.join(BASE_DIR, 'ui', 'dist')
 
 
 REQUEST_CACHE = {

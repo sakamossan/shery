@@ -1,0 +1,15 @@
+<div ng-init="pushNextItems()">
+  <div ng-repeat="item in list" class="row">
+    <a href="{{ item.url }}">
+      <div class="col-xs-12">
+        <div class="thumbnail">
+          <img ng-src="{{ item.image_url }}" alt="">
+          <div class="caption">
+            <p>{{ item.name }}</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <button ng-click="pushNextItems()" type="button" class="btn btn-primary btn-lg btn-block">next</button>
+</div>
