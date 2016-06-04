@@ -18,6 +18,7 @@ describe('Controller: ItemListCtrl', function () {
     q = $q;
   }));
 
+
   it('pushNextItemsが呼ばれたらGetリクエストを投げてlistを更新する', function () {
 
     expect(scope.list.length).toBe(0);

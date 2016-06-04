@@ -21,6 +21,8 @@ angular.module('sheryApp')
         params: { page: $scope.page }
       }).success(function (data) {
         $scope.list = $scope.list.concat(data);
-      }).error(function(data, status, header) { console.log(data, status, header); });
+      }).error(function(data, status, header) {
+        console.log(data, status, header);
+      });
     }
 }]);
