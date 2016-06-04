@@ -9,11 +9,13 @@ $ brew install pyenv
 $ brew install pyenv-virtualenv
 $ pyenv install anaconda3-2.4.0  # python3
 $ pyenv global  anaconda3-2.4.0
+$ mkdir shery
 $ pyenv virtualenv shery && cd $_
 $ mkdir log
 $ git clone xxxxx shery && cd $_
 $ pip install -r requirements.txt
 $ echo "xxxxxxxxxxx" | tee shery/secret.py
+$ mkdir sqlite
 $ ./scripts/reset.sh
 $ ./manage.py get_genres
 $ ./manage.py get_items
