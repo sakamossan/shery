@@ -496,7 +496,7 @@ module.exports = function (grunt) {
     'connect:test',
     'karma'
   ]);
-
+  
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
@@ -509,7 +509,7 @@ module.exports = function (grunt) {
     'copy:dist',
     // 'cdnify',
     'cssmin',
-    // 'uglify',
+    'uglify',
 //    'filerev',
     'usemin',
     'htmlmin'

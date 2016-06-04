@@ -8,17 +8,28 @@ describe('Controller: ItemListCtrl', function () {
   var $httpBackend;
   var ItemListCtrl;
   var scope;
+  var q;
 
-  beforeEach(inject(function ($injector, $rootScope, $controller) {
+  beforeEach(inject(function ($injector, $rootScope, $controller, $q) {
     $httpBackend = $injector.get('$httpBackend');
-    $httpBackend.whenGET('/rakuten/item/').respond(readJSON('test/mock/GET-rakuten-item-noargs.json'));
-
+    $httpBackend.whenGET(/rakuten\/item/).respond(readJSON('test/mock/GET-rakuten-item-noargs.json'));
     scope = $rootScope.$new();
     ItemListCtrl = $controller('ItemListCtrl', {'$scope': scope});
+    q = $q;
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    $httpBackend.flush();
-    expect(scope.list.length).toBe(10);
+  it('pushNextItemsが呼ばれたらGetリクエストを投げてlistを更新する', function () {
+
+    expect(scope.list.length).toBe(0);
+    expect(scope.page).toBe(0);
+
+    q.all([
+      scope.pushNextItems(),
+      scope.pushNextItems()
+    ]).then(function () {
+      expect(scope.list.length).toBe(20);
+      $httpBackend.flush();
+      expect(scope.page).toBe(0);
+    });
   });
 });
