@@ -7,22 +7,26 @@ let app = angular.module('sheryApp');
  * # ItemListCtrl
  * fetch and listing item data
  */
-app.controller('ItemListCtrl', ['$scope', '$http', function ($scope, $http) {
+app.controller('ItemListCtrl', ['$scope', '$http', ($scope, $http) => {
 
     $scope.page = 0;
     $scope.list = [];
 
-    $scope.pushNextItems = function () {
+    $scope.pushNextItems = () => {
         $scope.page++;
         return $http({
             method: 'GET',
             url: '/rakuten/item/',
-            params: { page: $scope.page }
-        }).success(function (data) {
+            params: $scope.queryParameter()
+        }).success((data) => {
             $scope.list = $scope.list.concat(data);
-        }).error(function(data, status, header) {
-            console.log(data, status, header);
-        });
-    }
+        }).error((data, status, header) => console.log(data, status, header))
+    };
+
+    $scope.queryParameter = () => {
+        return {
+            page: $scope.page
+        }
+    };
 }]);
 

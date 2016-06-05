@@ -16,7 +16,7 @@ gulp.task('bundle', function () {
 });
 
 gulp.task('babel', function () {
-    return browserify('./src/app.js', {debug: true})
+    return browserify('./src/main.js', {debug: true})
         .transform(babelify, { presets: ["es2015"] })
         .bundle()
         .on("error", function (err) { console.log("Error on babel task: " + err.message); })
@@ -49,4 +49,5 @@ gulp.task('watch', function(){
 });
 
 
-gulp.task('default', ['babel', 'test']);
+gulp.task('build', ['bundle', 'babel']);
+gulp.task('default', ['build', 'test']);
