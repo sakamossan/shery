@@ -1,27 +1,16 @@
-# shery
+# shery-client
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
-
-## Build & development
+[「朴槿恵の犬はドッグフードでも食ってろ」朴容疑者、警察にドッグフードを送りつける](http://news.mikimedia.net/entry/2015/03/06/105600)
 
 ```bash
-$ npm install -g yo grunt-cli bower
-$ npm install -g generator-angular
-$ yo angular --minsafe shery
-$ sudo gem update --system
-$ sudo gem install compass
-$ npm install \
-  grunt-karma \
-  karma \
-  karma-phantomjs-launcher \
-  karma-jasmine \
-  jasmine-core \
-  phantomjs-prebuilt --save-dev
+brew install nvm
+mkdir ~/.nvm
+echo 'export NVM_DIR=~/.nvm' >> ~/.bash_profile
+echo 'source $(brew --prefix nvm)/nvm.sh' >> ~/.bash_profile
+nvm install 4.4.5
+nvm use 4.4.5
+nvm alias default 4.4.5
+npm install --save-dev gulp karma browserify babelify karma-browserify karma-jasmine karma-phantomjs-launcher
+cd app && npm install
+./node_modules/gulp/bin/gulp.js test
 ```
-
-and Run `grunt` for building and `grunt serve` for preview.
-
-## Testing
-
-Running `grunt test` will run the unit tests with karma.

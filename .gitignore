@@ -1,5 +1,5 @@
 ui/node_modules
-ui/build/app.js
+ui/build/main.js
 sqlite/*
 secret.py
 
