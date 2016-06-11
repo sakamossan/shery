@@ -1,6 +1,6 @@
 ui/node_modules
 ui/build/main.js
-sqlite/*
+sqlite/*sqlite*
 secret.py
 ops/url
 ops/.vagrant/

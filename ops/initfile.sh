@@ -81,8 +81,8 @@ EOF"
 : "project" && {
     sudo su - shery sh -c "mkdir -p /shery/{run,log,bin}"
     sudo su - shery sh -c "cd /shery; git clone https://github.com/sakamossan/shery.git"
-    sudo su - shery sh -c "cd /shery/shery; git checkout ops"  # TODO
-    sudo su - shery sh -c "cp /tmp/files2/secret.py /shery/shery/project/secret.py"
+    sudo su - shery sh -c "cd /shery/shery; git checkout -b ops origin/ops"  # TODO
+    sudo su - shery sh -c "cp /tmp/files2/secret.py /shery/shery/shery/secret.py"
 #    sudo su - shery sh -c "cp /tmp/files2/newrelic.ini /shery/shery/newrelic.ini"
 
     sudo su - shery sh -c "cd /shery/shery; ~/.pyenv/bin/pyenv exec pip install -r requirements.txt"
@@ -93,22 +93,23 @@ EOF"
     sudo chmod +x /shery/bin/run.sh
 }
 
-
 : "middlewares" && {
     # nginx
-    sudo rm -f /etc/nginx/sites-available/default
-    sudo rm -f /etc/nginx/sites-enabled/default
-    sudo rm -f /etc/nginx/conf.d/default.conf
-    sudo cp -f /shery/shery/ops/nginx/nginx.conf /etc/nginx/
-    sudo cp -f /shery/shery/ops/nginx/conf.d/* /etc/nginx/conf.d/
-    sudo update-rc.d nginx disable  # defaultの起動を抑える
+    sudo rm -rf /etc/nginx/sites-{available,enabled}
+    sudo rm -f /etc/nginx/conf.d/*
+    sudo cp -f /shery/shery/ops/files/nginx/nginx.conf /etc/nginx/
+    sudo cp -f /shery/shery/ops/files/nginx/conf.d/* /etc/nginx/conf.d/
+    sudo service nginx stop
+    sudo update-rc.d nginx disable
 
     # mackerel
-    sudo cp -f /shery/shery/ops/mackerel-agent/mackerel-agent.conf /etc/mackerel-agent/mackerel-agent.conf
-    cat /tmp/files2/mkr-apikey.ini | sudo tee -a /etc/mackerel-agent/mackerel-agent.conf
+    sudo cp -f /shery/shery/ops/files/mackerel-agent/mackerel-agent.conf /etc/mackerel-agent/mackerel-agent.conf
+    cat /tmp/files2/mkr-apikey.ini /shery/shery/ops/files/mackerel-agent/mackerel-agent.conf | sudo tee /etc/mackerel-agent/mackerel-agent.conf
     sudo /etc/init.d/mackerel-agent start
 
     # supervisor
-    sudo cp -f /shery/shery/ops/supervisor/conf.d/* /etc/supervisor/conf.d/
+    sudo cp -f /shery/shery/ops/files/supervisor/conf.d/* /etc/supervisor/conf.d/
     sudo service supervisor restart
+
+    # scp -i ~/.ssh/shery_rsa ./sqlite/* shery@{{ IP }}:/shery/shery/sqlite/
 }
