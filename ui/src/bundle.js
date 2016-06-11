@@ -1,2 +1,4 @@
-let angular = require('angular');
+// src/bundle.jsはbableされない
+
+require('angular');
 require('angular-route');

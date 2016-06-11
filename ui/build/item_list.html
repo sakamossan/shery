@@ -1,16 +1,8 @@
 <div ng-init="pushNextItems()">
     <div>
-        <div class="center-block row btn-group" data-toggle="buttons">
-            <label class="col-xs-4 btn btn-info active">
-                <input type="checkbox" autocomplete="off" checked> 〜 1000円
-            </label>
-            <label class="col-xs-4 btn btn-info">
-                <input type="checkbox" autocomplete="off"> 1000円 〜 3000円
-            </label>
-            <label class="col-xs-4 btn btn-info">
-                <input type="checkbox" autocomplete="off"> 3000円 〜
-            </label>
-        </div>
+        <label ng-repeat="genre in genres" class="col-xs-4 btn btn-info">
+            <input type="checkbox" autocomplete="off" checked> 〜 1000円
+        </label>
     </div>
     <hr />
     <div ng-repeat="item in list" class="row">

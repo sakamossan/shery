@@ -7,10 +7,25 @@ let app = angular.module('sheryApp');
  * # ItemListCtrl
  * fetch and listing item data
  */
+
+let genres = [
+    {"id": "553133", "name": "ウェットフード"},
+    {"id": "553131", "name": "ガム"},
+    // {"id": "553131", "name": "ドライフード"},
+    // 'おやつ',
+    // 'サプリ',
+    // '水',
+    // 'ミルク',
+    // '離乳食',
+    // 'その他'
+    {"id": "206135", "name": "おやつ"}
+];
+
 app.controller('ItemListCtrl', ['$scope', '$http', ($scope, $http) => {
 
     $scope.page = 0;
     $scope.list = [];
+    $scope.genres = genres;
 
     $scope.pushNextItems = () => {
         $scope.page++;

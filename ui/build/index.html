@@ -14,15 +14,29 @@
             rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
             rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+        <!-- https://bootswatch.com/united/variables.less -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/united/bootstrap.css" rel="stylesheet" crossorigin="anonymous">
-        <style type="text/css">
-            body {
-              font-family: "Helvetica Neue", Helvetica, Arial, "游ゴシック体", "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-            }
-        </style>
+
+        <link rel="stylesheet" type="text/css" href="/static/css/shery.css" />
+
         <title>shery</title>
     </head>
     <body>
+
+
+    <!-- loading gif start -->
+    <div id="loader-bg">
+        <div id="loader">
+            <img src="/static/img/loading.gif" width="80" height="80" alt="Now Loading..." />
+            <p>Now Loading...</p>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="/static/css/page_loading.css" />
+    <script src="/static/js/page_loading.js"></script>
+    <!-- loading gif end -->
+
+
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -34,8 +48,9 @@
         <div ng-view=""></div>
     </div>
     </body>
-    <script src="/static/bundle.js"></script>
-    <script src="/static/app.js"></script>
+    <script src="/static/js/bundle.js"></script>
+
+    <script src="/static/js/app.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootlint/0.14.2/bootlint.min.js"
         integrity="sha384-M9T3JVTBbDUeEzC8X6JJbfV/mwsN/NrkiJ9NW1FQqOsgIeBoE/ep1oUZ/NJAx5Wq" crossorigin="anonymous"></script>
 {% endverbatim %}
