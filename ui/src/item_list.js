@@ -9,16 +9,15 @@ let app = angular.module('sheryApp');
  */
 
 let genres = [
-    { id: "553131", name: "ドライフード"},
     { id: "553133", name: "ウェットフード", fa: "cutlery" },
     { id: "553131", name: "ガム", fa: "medkit"},
+    { id: "553131", name: "ドライフード"},
     { id: "206135", name: "おやつ", fa: "heart-o"}
     // 'サプリ',
     // '水',
     // 'ミルク',
     // '離乳食',
     // 'その他'
-
 ];
 
 app.controller('ItemListCtrl', ['$scope', '$http', ($scope, $http) => {
