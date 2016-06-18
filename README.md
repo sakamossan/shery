@@ -43,6 +43,5 @@ $ source ~/.bashrc
 $ cd ~/shery/shery/ui
 $ npm install
 $ gulp
-$ ~/.pyenv/bin/pyenv exec python ~/shery/shery/manage.py runserver
-$ open -aSafari "http://127.0.0.1:8000/"
+$ ~/shery/shery/scripts/devui.sh
 ```
