@@ -1,24 +1,20 @@
 <div ng-init="pushNextItems()">
-
-    <div class="btn-group" data-toggle="buttons">
-        <label ng-repeat="genre in genres" ng-click="changeGenre(genre)" class="btn btn-info">
-            <input type="radio" autocomplete="off">
-            {{ genre.name }}
-        </label>
-    </div>
+    <ul>
+        <li ng-repeat="genre in genres">
+            <label>
+                <input type="button" ng-click="changeGenre(genre)">
+                {{ genre.name }}
+            </label>
+        </li>
+    </ul>
     <hr />
-
-    <div ng-repeat="item in list" class="row">
+    <div ng-repeat="item in list">
         <a href="{{ item.url }}">
-            <div class="col-xs-12">
-                <div class="thumbnail">
-                    <img ng-src="{{ item.image_url }}" alt="">
-                    <div class="caption">
-                        <p>{{ item.name }}</p>
-                    </div>
-                </div>
+            <div>
+                <img ng-src="{{ item.image_url }}" alt="">
+                <p>{{ item.name }}</p>
             </div>
         </a>
     </div>
-    <button ng-click="pushNextItems()" type="button" class="btn btn-primary btn-lg btn-block">next</button>
+    <button ng-click="pushNextItems()" type="button">next</button>
 </div>
