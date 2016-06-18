@@ -19,7 +19,10 @@ gulp.task('babel', function () {
     return browserify('./src/main.js', {debug: true})
         .transform(babelify, { presets: ["es2015"] })
         .bundle()
-        .on("error", function (err) { console.log("Error on babel task: " + err.message); })
+        .on("error", (err) => {
+            console.log("Error on babel task: " + err.message);
+            this.emit("end");
+        })
         .pipe(source('./js/app.js'))
         .pipe(gulp.dest('./build'))
         .pipe(browserSync.reload({stream: true}));
