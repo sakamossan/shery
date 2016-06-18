@@ -81,7 +81,7 @@ EOF"
 : "project" && {
     sudo su - shery sh -c "mkdir -p /shery/{run,log,bin}"
     sudo su - shery sh -c "cd /shery; git clone https://github.com/sakamossan/shery.git"
-    sudo su - shery sh -c "cd /shery/shery; git checkout -b ops origin/ops"  # TODO
+#    sudo su - shery sh -c "cd /shery/shery; git checkout -b ops origin/ops"
     sudo su - shery sh -c "cp /tmp/files2/secret.py /shery/shery/shery/secret.py"
 #    sudo su - shery sh -c "cp /tmp/files2/newrelic.ini /shery/shery/newrelic.ini"
 
