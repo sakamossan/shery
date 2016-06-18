@@ -10,5 +10,8 @@ cd ../
 cd ./ui
 gulp watch &
 
+sleep 3
+open -aSafari "http://127.0.0.1:8000/"
+
 trap "kill -TERM -$$" SIGINT
 wait
