@@ -4,19 +4,19 @@ var babelify= require('babelify');
 var source = require('vinyl-source-stream');
 var util = require('gulp-util');
 var Server = require('karma').Server;
-var browserSync = require('browser-sync');
+var sass = require('gulp-sass');
 
 
-gulp.task('bundle', function () {
-    return browserify('./src/bundle.js', {debug: true})
+gulp.task('bundle', () => {
+    return browserify('./src/js/bundle.js', {debug: true})
         .bundle()
         .pipe(source('bundle.js'))
         .pipe(gulp.dest('./build/'));
 
 });
 
-gulp.task('babel', function () {
-    return browserify('./src/main.js', {debug: true})
+gulp.task('babel', () => {
+    return browserify('./src/js/main.js', {debug: true})
         .transform(babelify, { presets: ["es2015"] })
         .bundle()
         .on("error", (err) => {
@@ -29,7 +29,17 @@ gulp.task('babel', function () {
 });
 
 
-gulp.task('test', function (done) {
+gulp.task('css', () => {
+  return gulp.src('./src/**/*.scss')
+    .pipe(sass())
+    .on('error', (err) => {
+      console.log(err.message);
+    })
+    .pipe(gulp.dest('./build/'))
+});
+
+
+gulp.task('test', (done) => {
     new Server({
         configFile: __dirname + '/karma.conf.js',
         singleRun: true
@@ -37,18 +47,9 @@ gulp.task('test', function (done) {
 });
 
 
-gulp.task('browser-sync', () => {
-    browserSync.init(null, {
-        server: './build',
-        reloadDelay: 500
-    });
+gulp.task('watch', () => {
     gulp.watch('./src/**/*.js', ['babel']);
-    gulp.watch("build/*.html").on('change', browserSync.reload);
-});
-
-
-gulp.task('watch', function(){
-    gulp.watch('./src/**/*.js', ['babel']);
+    gulp.watch('./src/**/*.scss', ['css']);
 });
 
 
