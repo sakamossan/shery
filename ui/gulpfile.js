@@ -24,8 +24,7 @@ gulp.task('babel', () => {
             this.emit("end");
         })
         .pipe(source('./js/app.js'))
-        .pipe(gulp.dest('./build'))
-        .pipe(browserSync.reload({stream: true}));
+        .pipe(gulp.dest('./build'));
 });
 
 
