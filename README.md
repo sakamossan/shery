@@ -7,6 +7,7 @@
 ### install python3
 
 ```bash
+$ xcode-select --install
 $ git clone https://github.com/yyuu/pyenv.git ~/.pyenv
 $ ~/.pyenv/bin/pyenv install 3.5.1
 $ ~/.pyenv/bin/pyenv global 3.5.1
