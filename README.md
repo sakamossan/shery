@@ -7,6 +7,7 @@
 ### install python3
 
 ```bash
+$ xcode-select --install
 $ git clone https://github.com/yyuu/pyenv.git ~/.pyenv
 $ ~/.pyenv/bin/pyenv install 3.5.1
 $ ~/.pyenv/bin/pyenv global 3.5.1
@@ -32,9 +33,9 @@ $ ~/.pyenv/bin/pyenv exec python ~/shery/shery/manage.py bigger_image_size
 ```bash
 $ curl -L git.io/nodebrew | perl - setup
 $ echo 'export PATH=$HOME/.nodebrew/current/bin:$PATH' | tee -a ~/.bashrc
+$ source ~/.bashrc
 $ nodebrew install-binary v4.4.5
 $ nodebrew use v4.4.5
-$ source ~/.bashrc
 ```
 
 ### build ui
@@ -42,6 +43,7 @@ $ source ~/.bashrc
 ```bash
 $ cd ~/shery/shery/ui
 $ npm install
+$ npm install -g gulp 
 $ gulp
 $ ~/shery/shery/scripts/devui.sh
 ```

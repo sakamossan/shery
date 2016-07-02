@@ -12,7 +12,6 @@ gulp.task('bundle', () => {
         .bundle()
         .pipe(source('bundle.js'))
         .pipe(gulp.dest('./build/'));
-
 });
 
 gulp.task('babel', () => {

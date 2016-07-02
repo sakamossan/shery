@@ -10,7 +10,12 @@ cd ../
 cd ./ui
 gulp watch &
 
-sleep 3
+OK=1
+while [ $OK -ne 0 ]; do
+    sleep 1
+    curl -s "http://127.0.0.1:8000/" > /dev/null
+    OK=$?
+done
 open -aSafari "http://127.0.0.1:8000/"
 
 trap "kill -TERM -$$" SIGINT
